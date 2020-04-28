@@ -1,4 +1,4 @@
-# ros-system-monitor
+# system_monitor
 
 ## Synopsis
 
@@ -39,9 +39,9 @@ The maintainers of this project provide binary packages for the latest Ubuntu
 LTS releases and commonly used system architectures. To install these packages,
 you may follow these instructions:
 
-* Add the project PPA to your APT sources by issuing 
+* Add the project PPA to your APT sources by issuing
 
-  ```
+  ```sh
   sudo add-apt-repository ppa:ethz-asl/ros
   ```
 
@@ -49,13 +49,13 @@ you may follow these instructions:
 
 * To re-synchronize your package index files, run
 
-  ```
+  ```sh
   sudo apt-get update
   ```
 
 * Install all project packages and their dependencies through
 
-  ```
+  ```sh
   sudo apt-get install ros-ROS_DISTRO-system-monitor
   ```
 
@@ -91,19 +91,19 @@ Once ReMake is available on your build system, you may attempt to build this
 project the CMake way. Assuming that you have cloned the project sources into
 `PROJECT_DIR`, a typical out-of-source build might look like this:
 
-* Create a build directory using 
+* Create a build directory using
 
   ```
   mkdir -p PROJECT_DIR/build
   ```
 
-* Switch into the build directoy by 
+* Switch into the build directoy by
 
   ```
   cd PROJECT_DIR/build
   ```
 
-* In the build directory, run 
+* In the build directory, run
 
   ```
   cmake -DROS_DISTRIBUTION=ROS_DISTRO PROJECT_DIR
@@ -111,25 +111,25 @@ project the CMake way. Assuming that you have cloned the project sources into
 
   to configure the build
 
-* If you want to inspect or modify the build configuration, issue 
+* If you want to inspect or modify the build configuration, issue
 
   ```
   ccmake PROJECT_DIR
   ```
 
-* Build the project using 
+* Build the project using
 
   ```
   make
   ```
 
-* If you intend to install the project, call 
+* If you intend to install the project, call
 
   ```
   make packages_install
   ```
 
-  (from packages on Debian-based Linux only) or 
+  (from packages on Debian-based Linux only) or
 
   ```
   make install

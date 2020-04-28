@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
 
-  <name>ros_system_monitor</name>
+  <name>system_monitor</name>
 
   <version>0.1.1</version>
 
@@ -24,10 +24,10 @@
   <depend>std_msgs</depend>
   <depend>diagnostic_msgs</depend>
 
-  <run_depend>sysstat</run_depend>
-  <run_depend>hddtemp</run_depend>
-  <run_depend>ntpdate</run_depend>
-  <run_depend>ifstat</run_depend>
+  <depend>sysstat</depend>
+  <depend>hddtemp</depend>
+  <depend>ntpdate</depend>
+  <depend>ifstat</depend>
 
   <export/>
 
