@@ -14,7 +14,7 @@
 
   <maintainer email="ralf.kaestner@gmail.com">Ralf Kaestner</maintainer>
 
-  <license>GNU Lesser General Public License (LGPL)</license>
+  <license>BSD3</license>
 
   <url>http://github.com/ethz-asl/ros-system-monitor</url>
 
