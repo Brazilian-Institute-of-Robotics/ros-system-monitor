@@ -1,3 +1,13 @@
+system-monitor (0.1-23) unstable; urgency=low
+
+  * Fixed float parsing when used locale has comma as decimal separator Issue (https://github.com/ethz-asl/ros-system-monitor/issues/1)
+
+  * license Issue (https://github.com/ethz-asl/ros-system-monitor/issues/4)
+
+ -- Ronaldo Evangelista <ronaldo.evangelista@fieb.org.br>  Tue, 28 April
+ 2020 16:46:00 -0300
+
+
 ros-system-monitor (0.1-22) unstable; urgency=low
 
   * Updated changelog
