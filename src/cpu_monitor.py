@@ -193,11 +193,12 @@ class CPUMonitor():
             if unicode(tmp).isnumeric():
                 temp = float(tmp) / 1000
                 diag_vals.append(KeyValue(key = 'Core %d Temperature' % index, value = str(temp)+" DegC"))
-
-                if temp >= self._cpu_temp_warn:
+                if temp < self._cpu_temp_warn:
+                    diag_level = DiagnosticStatus.OK
+                elif temp < self._cpu_temp_error:
                     diag_level = max(diag_level, DiagnosticStatus.WARN)
                     diag_msgs.append('Warm')
-                elif temp >= self._cpu_temp_error:
+                else:
                     diag_level = max(diag_level, DiagnosticStatus.ERROR)
                     diag_msgs.append('Hot')
             else:
@@ -333,21 +334,22 @@ class CPUMonitor():
 
                 cpu_name = '%d' % (num_cores)
                 idle = lst[idle_col]
-                user = lst[3]
-                nice = lst[4]
-                system = lst[5]
+                user = lst[2].replace(',', '.')
+                nice = lst[3].replace(',', '.')
+                system = lst[4].replace(',', '.')
 
-                core_level = 0
-                usage = (float(user.replace(',', '.', 1))+float(nice.replace(',', '.', 1)))*1e-2
+                usage = (float(user)+float(nice))*1e-2
                 if usage > 10.0: # wrong reading, use old reading instead
                     rospy.logwarn('Read CPU usage of %f percent. Reverting to previous reading of %f percent'%(usage, self._usage_old))
                     usage = self._usage_old
                 self._usage_old = usage
-
-                if usage >= self._cpu_load_warn:
+                
+                if usage < self._cpu_load_warn:
+                    core_level = DiagnosticStatus.OK
+                elif usage < self._cpu_load_error:
                     cores_loaded += 1
                     core_level = DiagnosticStatus.WARN
-                elif usage >= self._cpu_load_error:
+                else:
                     core_level = DiagnosticStatus.ERROR
 
                 vals.append(KeyValue(key = 'Core %s Status' % cpu_name, value = load_dict[core_level]))
